@@ -9,10 +9,54 @@ require('dotenv/config')
 //     res.send("Test Post")
 // });
 
-router.post('/posts', (req,res) =>{
+router.post('/postsTest', (req,res) =>{
     console.log(req.body);
     res.send(req.body);
 });
+router.get('/findAll', async (req,res) =>{
+    const result = await M_Projects.find();
+    if(result.length > 0 ){
+        res.status(200).json({
+            status:0,
+            message:result
+        });
+    }else{
+        res.status(200).json({
+        status:1,
+        message:"ERROR"
+        });
+    }
+});
+// Find by User and group
+router.get('/findProjectList', async (req,res) =>{
+    var result = "";
+    // const db_result = await M_Projects.find();
+    // if(db_result.length > 0 && req.params.userID != null&& req.params.projectGroup != null){
+    //     //dbr_indx = DataBase index
+    //     for(var dbr_indx = 0 ; dbr_indx<db_result.length;dbr_indx++){
+    //         var projectUserList = db_result[dbr_indx].p_user.length;
+    //         // UList =  DataBase user List 
+    //         for(var dbr_UList = 0;dbr_UList<projectUserList;dbr_UList++){
+    //             // if(db_result[dbr_indx].p_user[dbr_UList])
+    //             console.log(db_result[dbr_indx].p_user[dbr_UList]);
+    //         }
+            
+    //     }
+    //     res.status(200).json({
+    //         status:0,
+    //         message:result
+    //     });
+    // }
+    console.warn(req.body);
+    //{ $or: [ { quantity: { $lt: 20 } }, { price: 10 } ] }
+    var query = { $or: [ { p_user: req.body.userID }, { p_ser_group: req.body.groupID } ] };
+    // var query = { p_user: req.body.userID, p_ser_group:req.body.groupID};
+    const db_result = await M_Projects.find(query);
+    console.log(db_result);
+
+});
+
+
 router.get('/findByID/:projectID', (req,res) =>{
     const result = M_Projects.findOne({project_id:req.params.projectID},(err,data)=>{
         if(!err){
