@@ -102,11 +102,16 @@ router.post('/create',(req,res) =>{
                         console.log('success create project');
                     })
                     .catch((err) => {
-                        res.status(200).json({
-                            status:2,
-                            message:"The Project id have already exists",
-                            error: err
-                        });
+                        
+                        if(err.code == '11000'){
+                            console.log("DataBase Error:"+err)
+                            console.log(M_Project)
+                            res.status(200).json({
+                                status:2,
+                                message:"The Project id have already exists",
+                                error: err
+                            });
+                        }
                     })
                     
         
