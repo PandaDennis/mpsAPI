@@ -20,7 +20,14 @@ router.get('/findAll', async (req,res) =>{
             status:0,
             message:result
         });
-    }else{
+    }
+    if (result.length <= 0){
+        res.status(200).json({
+            status:1,
+            message:"No Data was Returned !"
+            });
+    }
+    else{
         res.status(200).json({
         status:1,
         message:"ERROR"
