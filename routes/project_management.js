@@ -76,9 +76,10 @@ router.get('/findByID/:projectID', (req,res) =>{
 });
  
 router.post('/create',(req,res) =>{
+    var req_JSON = req.body[0];
     M_Projects.find({project_id: req.body.projectid},(err,data) =>{
         if(!err && data.project_id == null){
-            const project_path = os.homedir()+process.env.SYSTEM_DIRECTORY+"/"+req.body.projectid;
+            const project_path = os.homedir()+process.env.SYSTEM_DIRECTORY+"/"+req_JSON.projectid;
             if (!fs.existsSync(project_path)){
                 console.log('success create'+project_path);
                 //console.log(project_path);
@@ -89,15 +90,15 @@ router.post('/create',(req,res) =>{
                 fs.mkdirSync(project_path+'/org');
             }
             if (fs.existsSync(project_path+'/org')){
-                
+                    var projectpach = "/"+req_JSON.projectid;
                     const M_Project = new M_Projects({
-                    project_id: req.body.projectid,
-                    project_name: req.body.projectname,
-                    project_master: req.body.master,
-                    p_user: req.body.projectUser,
-                    p_ser_group: req.body.projectGroup,
-                    status:req.body.projectStatus,
-                    project_file:req.body.fileDir,
+                    project_id: req_JSON.projectid,
+                    project_name: req_JSON.projectname,
+                    project_master: req_JSON.master,
+                    p_user: req_JSON.projectUser,
+                    p_ser_group: req_JSON.projectGroup,
+                    status:req_JSON.projectStatus,
+                    project_file: projectpach,
             
                     });
                M_Project.save()
