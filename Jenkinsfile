@@ -1,6 +1,7 @@
 pipeline {
     agent any
-
+    tools {nodejs "nodejs"}
+    
     stages {
        
         stage('Check npm version') {
@@ -26,4 +27,12 @@ pipeline {
             }
         }
     }
+
+    stage('Deploy') {
+      steps {
+        echo 'Deploying....'
+      }
+    }
+
+  }
 }
