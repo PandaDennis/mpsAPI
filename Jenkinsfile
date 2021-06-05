@@ -21,7 +21,6 @@ pipeline {
       }
       steps {
         echo 'Testing..'
-        sh 'echo $NODE_ENV'
       }
     }
 
@@ -29,6 +28,7 @@ pipeline {
       steps {
         echo 'Deploying....'
         sh 'npm run'
+        sh 'echo $NODE_ENV'
       }
     }
 
