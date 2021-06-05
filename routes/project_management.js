@@ -16,19 +16,19 @@ router.post('/postsTest', (req,res) =>{
 router.get('/findAll', async (req,res) =>{
     const result = await M_Projects.find();
     if(result.length > 0 ){
-        res.status(200).json({
+        return  res.status(200).json({
             status:0,
             message:result
         });
     }
     if (result.length <= 0){
-        res.status(200).json({
+        return res.status(200).json({
             status:1,
             message:"No Data was Returned !"
             });
     }
     else{
-        res.status(200).json({
+        return res.status(200).json({
         status:1,
         message:"ERROR"
         });
