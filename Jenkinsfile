@@ -2,7 +2,7 @@ pipeline {
   agent any
   tools {nodejs "nodejs"}
   environment {
-        DB_CONNEVTION = credentials('mongodb+srv://API_user:gBxQDOLQ6Grk4Tcw@testcluster0.xlaia.mongodb.net/MPS_DB?retryWrites=true&w=majority')
+        DB_CONNEVTION = 'mongodb+srv://API_user:gBxQDOLQ6Grk4Tcw@testcluster0.xlaia.mongodb.net/MPS_DB?retryWrites=true&w=majority'
     }
   stages {
     stage('Check npm version') {
