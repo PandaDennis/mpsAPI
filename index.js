@@ -11,7 +11,8 @@ const app = express();
 
 // connect to DB 
 mongoose.connect(
-  process.env.DB_CONNECTION,
+  // process.env.DB_CONNECTION,
+  'mongodb+srv://API_user:gBxQDOLQ6Grk4Tcw@testcluster0.xlaia.mongodb.net/MPS_DB?retryWrites=true&w=majority',
   {useNewUrlParser: true, useUnifiedTopology: true} ,
   () => console.log('connect to DB ')
 );
