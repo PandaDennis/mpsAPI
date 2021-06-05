@@ -21,6 +21,7 @@ pipeline {
       }
       steps {
         echo 'Testing..'
+        sh 'echo $NODE_ENV'
       }
     }
 
