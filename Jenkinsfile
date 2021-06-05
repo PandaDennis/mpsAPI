@@ -27,8 +27,7 @@ pipeline {
     stage('Deploy') {
       steps {
         echo 'Deploying....'
-        sh 'npm run'
-        sh 'echo $NODE_ENV'
+        sh 'npm start'
       }
     }
 
