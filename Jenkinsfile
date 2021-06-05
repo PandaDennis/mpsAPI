@@ -1,9 +1,5 @@
 pipeline {
   agent any
-  tools {nodejs "nodejs"}
-  environment {
-        DB_CONNEVTION = 'mongodb+srv://API_user:gBxQDOLQ6Grk4Tcw@testcluster0.xlaia.mongodb.net/MPS_DB?retryWrites=true&w=majority'
-    }
   stages {
     stage('Check npm version') {
       steps {
@@ -20,8 +16,12 @@ pipeline {
     }
 
     stage('Test') {
+      environment {
+        CI = 'true'
+      }
       steps {
         echo 'Testing..'
+        sh './jenkins/scripts/test.sh'
       }
     }
 
@@ -32,5 +32,11 @@ pipeline {
       }
     }
 
+  }
+  tools {
+    nodejs 'nodejs'
+  }
+  environment {
+    DB_CONNEVTION = 'mongodb+srv://API_user:gBxQDOLQ6Grk4Tcw@testcluster0.xlaia.mongodb.net/MPS_DB?retryWrites=true&w=majority'
   }
 }
