@@ -27,23 +27,12 @@ pipeline {
     }
 
     stage('Test') {
-      parallel {
-        stage('Test') {
-          environment {
-            CI = 'true'
-          }
-          steps {
-            echo 'Testing..'
-            sh 'npm audit fix'
-          }
-        }
-
-        stage('stop all pm2') {
-          steps {
-            sh 'pm2 stop all'
-          }
-        }
-
+      environment {
+        CI = 'true'
+      }
+      steps {
+        echo 'Testing..'
+        sh 'npm audit fix'
       }
     }
 
