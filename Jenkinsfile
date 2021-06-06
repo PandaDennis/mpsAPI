@@ -9,9 +9,20 @@ pipeline {
     }
 
     stage('Build') {
-      steps {
-        echo 'Building..'
-        sh 'npm install'
+      parallel {
+        stage('Build') {
+          steps {
+            echo 'Building..'
+            sh 'npm install'
+          }
+        }
+
+        stage('install pm2 ') {
+          steps {
+            sh 'npm install -g pm2'
+          }
+        }
+
       }
     }
 
@@ -27,9 +38,9 @@ pipeline {
           }
         }
 
-        stage('install pm2') {
+        stage('stop all pm2') {
           steps {
-            sh 'npm install -g pm2'
+            sh 'pm2 stop all'
           }
         }
 
