@@ -9,20 +9,9 @@ pipeline {
     }
 
     stage('Build') {
-      parallel {
-        stage('Build') {
-          steps {
-            echo 'Building..'
-            sh 'npm install'
-          }
-        }
-
-        stage('install pm2 ') {
-          steps {
-            sh 'npm install -g pm2'
-          }
-        }
-
+      steps {
+        echo 'Building..'
+        sh 'npm install'
       }
     }
 
@@ -39,7 +28,7 @@ pipeline {
     stage('Deploy') {
       steps {
         echo 'Deploying....'
-        sh 'pm2 start index.js -- --port 4083'
+        sh 'npm start'
       }
     }
 
