@@ -13,6 +13,7 @@ pipeline {
         echo 'Building..'
         sh 'npm install'
       }
+      
     }
 
     stage('Test') {
@@ -21,6 +22,7 @@ pipeline {
       }
       steps {
         echo 'Testing..'
+        sh 'npm audit fix'
       }
     }
 
