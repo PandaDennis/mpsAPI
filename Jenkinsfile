@@ -13,16 +13,26 @@ pipeline {
         echo 'Building..'
         sh 'npm install'
       }
-      
     }
 
     stage('Test') {
-      environment {
-        CI = 'true'
-      }
-      steps {
-        echo 'Testing..'
-        sh 'npm audit fix'
+      parallel {
+        stage('Test') {
+          environment {
+            CI = 'true'
+          }
+          steps {
+            echo 'Testing..'
+            sh 'npm audit fix'
+          }
+        }
+
+        stage('install pm2') {
+          steps {
+            sh 'npm install -g pm2'
+          }
+        }
+
       }
     }
 
