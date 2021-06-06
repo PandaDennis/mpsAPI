@@ -27,7 +27,7 @@ pipeline {
     stage('Deploy') {
       steps {
         echo 'Deploying....'
-        sh 'npm start'
+        sh 'pm2 start index.js'
       }
     }
 
