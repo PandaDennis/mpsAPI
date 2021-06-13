@@ -37,6 +37,6 @@ pipeline {
     nodejs 'nodejs'
   }
   environment {
-    DB_CONNEVTION = 'mongodb+srv://API_User:vdCDzdi1KH9Du7D6@cluster0.wrxik.mongodb.net/myFirstDatabase?authSource=admin&replicaSet=atlas-b4dcqm-shard-0&w=majority&readPreference=primary&appname=MongoDB%20Compass&retryWrites=true&ssl=true'
+    DB_CONNEVTION = 'mongodb+srv://API_User:vdCDzdi1KH9Du7D6@cluster0.wrxik.mongodb.net/MPS_DB?authSource=admin&replicaSet=atlas-b4dcqm-shard-0&w=majority&readPreference=primary&appname=MongoDB%20Compass&retryWrites=true&ssl=truetrue'
   }
 }
