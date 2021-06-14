@@ -10,6 +10,7 @@ require('dotenv/config')
 const app = express();
 
 // connect to DB 
+mongoose.set('useCreateIndex', true)
 mongoose.connect(
   process.env.DB_CONNEVTION,
   {useNewUrlParser: true, useUnifiedTopology: true} ,
