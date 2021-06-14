@@ -22,6 +22,10 @@ const projectSchema = mongoose.Schema({
         type: Array,
         require:true
     },
+    p_description:{
+        type: String,
+        require:false
+    },
     status:{
         type:Boolean,
         require:true

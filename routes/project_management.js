@@ -97,6 +97,7 @@ router.post('/create',(req,res) =>{
                     project_master: req_JSON.master,
                     p_user: req_JSON.projectUser,
                     p_ser_group: req_JSON.projectGroup,
+                    p_description:req_JSON.description,
                     status:req_JSON.projectStatus,
                     project_file: projectpach,
             
