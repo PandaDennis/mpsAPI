@@ -69,7 +69,7 @@ router.get('/findByID/:projectID', (req, res) => {
         if (!err) {
             if (!err && data.project_id == null) {
                 res.send(data.project_id);
-            } res.send(data.project_id);
+            } res.send(data);
         } else {
             res.status(200).json({
                 status: 2,
