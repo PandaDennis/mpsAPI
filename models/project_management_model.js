@@ -8,7 +8,8 @@ const projectSchema = mongoose.Schema({
     },
     project_name:{
         type:  String,
-        require: true
+        require: true,
+        maxLength: 20
     },
     project_master:{
         type:  String,
